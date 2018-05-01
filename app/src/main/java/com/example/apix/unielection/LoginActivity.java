@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.appolica.flubber.Flubber;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -26,7 +28,7 @@ import java.net.URLEncoder;
 
 public class LoginActivity extends AppCompatActivity {
 
-    String login_url = "http://192.168.43.202/uni-election1/login.php";
+    String login_url = "http://192.168.43.125/uni-election/login.php";
 
     Button loginBtn;
     EditText regEditText;
@@ -51,6 +53,12 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(regNum.isEmpty()||password.isEmpty()){
                         Toast.makeText(getApplicationContext(),"Please fill the fields",Toast.LENGTH_SHORT).show();
+                        Flubber.with()
+                                .animation(Flubber.AnimationPreset.SHAKE) // Slide up animation
+                                .repeatCount(0)                              // Repeat once
+                                .duration(300)                              // Last for 1000 milliseconds(1 second)
+                                .createFor(loginBtn)                             // Apply it to the view
+                                .start();
                     }else{
                         String[] temp = regNum.split("/");
                         regNum = temp[0].toLowerCase()+"/"+temp[1].toLowerCase()+"/"+temp[2]+"/"+temp[3];
@@ -61,10 +69,22 @@ public class LoginActivity extends AppCompatActivity {
 //                            startActivity(intent);
                         }else{
                             Toast.makeText(getApplicationContext(),"Wrong Reg# format",Toast.LENGTH_SHORT).show();
+                            Flubber.with()
+                                    .animation(Flubber.AnimationPreset.SHAKE) // Slide up animation
+                                    .repeatCount(0)                              // Repeat once
+                                    .duration(300)                              // Last for 1000 milliseconds(1 second)
+                                    .createFor(loginBtn)                             // Apply it to the view
+                                    .start();
                         }
                     }
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(),"Wrong Reg# format",Toast.LENGTH_SHORT).show();
+                    Flubber.with()
+                            .animation(Flubber.AnimationPreset.SHAKE) // Slide up animation
+                            .repeatCount(0)                              // Repeat once
+                            .duration(300)                              // Last for 1000 milliseconds(1 second)
+                            .createFor(loginBtn)                             // Apply it to the view
+                            .start();
                 }
 
             }

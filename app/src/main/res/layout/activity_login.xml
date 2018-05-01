@@ -21,7 +21,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/udomlogo"
-        android:id="@+id/img"
+        android:id="@+id/imgCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +33,7 @@
         android:layout_height="250dp"
         android:orientation="vertical"
         android:background="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/img"
+        app:layout_constraintTop_toBottomOf="@id/imgCard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -107,8 +107,9 @@
         app:layout_constraintRight_toRightOf="@id/loginLayout"
         app:layout_constraintTop_toTopOf="@id/loginLayout"
         android:layout_marginTop="220dp"
-        android:stateListAnimator="@animator/anim"
         android:id="@+id/loginBtn"/>
+        <!--android:stateListAnimator="@animator/anim"-->
+
 
 
 </android.support.constraint.ConstraintLayout>

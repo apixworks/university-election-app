@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="170dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="110dp"
+        android:layout_height="140dp"
+        app:cardElevation="5dp"
+        app:cardBackgroundColor="#e3e3e3"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/imgCard">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/fred"
+            android:id="@+id/img"/>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apina, Frederick R."
+        android:layout_toEndOf="@id/imgCard"
+        android:textSize="18sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BSc. Software Engineering"
+        android:layout_toEndOf="@id/imgCard"
+        android:layout_below="@id/name"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="9dp"
+        android:id="@+id/program"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Year Of Study: 2"
+        android:layout_toEndOf="@id/imgCard"
+        android:layout_below="@id/program"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="9dp"
+        android:id="@+id/yos"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male"
+        android:layout_toEndOf="@id/imgCard"
+        android:layout_marginStart="8dp"
+        android:layout_below="@id/yos"
+        android:layout_marginTop="9dp"
+        android:id="@+id/gender"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number Of Votes:"
+        android:layout_toEndOf="@id/imgCard"
+        android:layout_marginStart="8dp"
+        android:layout_below="@id/gender"
+        android:layout_marginTop="9dp"
+        android:id="@+id/num"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="46"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@id/gender"
+        android:layout_marginTop="9dp"
+        android:layout_toEndOf="@id/num"
+        android:layout_marginStart="8dp"
+        android:id="@+id/votes"/>
+
+    <View
+        android:layout_width="110dp"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@id/num"
+        android:layout_toEndOf="@id/imgCard"
+        android:layout_marginStart="8dp"/>
+
+</RelativeLayout>

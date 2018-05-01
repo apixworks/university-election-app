@@ -71,9 +71,9 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.Cand
         holder.name.setText(candidates.get(position).name);
         holder.program.setText(candidates.get(position).program);
         holder.yos.setText("Year of Study: "+candidates.get(position).yos);
-
+        holder.gender.setText(candidates.get(position).gender);
         holder.radioButton.setChecked(position == selectedPosition);
-        GlideApp.with(context).load("http://192.168.43.202/uni-election1/img/candidates/"+candidates.get(position).img_url).apply(requestOptions).into(holder.imageView);
+        GlideApp.with(context).load("http://192.168.43.125/uni-election/img/candidates/"+candidates.get(position).img_url).apply(requestOptions).into(holder.imageView);
         holder.radioButton.setTag(position);
         holder.cardView.setTag(position);
         holder.radioButton.setOnClickListener(new View.OnClickListener() {

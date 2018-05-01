@@ -16,9 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.badoualy.stepperindicator.StepperIndicator;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,9 +46,9 @@ public class MainActivity extends AppCompatActivity implements FederalPresidentF
 
     private static String TAG = MainActivity.class.getSimpleName();
 
-    private static String url = "http://192.168.43.202/uni-election1/data_json.php";
+    private static String url = "http://192.168.43.125/uni-election/data_json.php";
 
-    String vote_url = "http://192.168.43.202/uni-election1/app_votes.php";
+    String vote_url = "http://192.168.43.125/uni-election/app_votes.php";
 
 
     //    List<Candidate> candidatesList;
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements FederalPresidentF
     PagerAdapter pagerAdapter;
     View.OnClickListener onClickListener;
     StepperIndicator stepperIndicator;
+    TextView loadingTxt;
+    AVLoadingIndicatorView avi;
     Handler handler;
 
     int federal_president = -1,
@@ -79,6 +83,13 @@ public class MainActivity extends AppCompatActivity implements FederalPresidentF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        loadingTxt = (TextView)findViewById(R.id.loadingTxt);
+        avi = (AVLoadingIndicatorView)findViewById(R.id.avi);
+        viewPager = (ViewPager)findViewById(R.id.viewPger);
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.hide();
+        stepperIndicator = (StepperIndicator)findViewById(R.id.stepper);
+
         new CandidatesTask().execute();
 
         reg_no = getIntent().getStringExtra("reg_no");
@@ -95,10 +106,6 @@ public class MainActivity extends AppCompatActivity implements FederalPresidentF
 
         handler = new Handler();
 
-        viewPager = (ViewPager)findViewById(R.id.viewPger);
-        fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab.hide();
-        stepperIndicator = (StepperIndicator)findViewById(R.id.stepper);
 //        pagerAdapter = new PagerAdapter(getSupportFragmentManager(),6);
 //        viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(5);
@@ -235,6 +242,8 @@ public class MainActivity extends AppCompatActivity implements FederalPresidentF
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            avi.show();
+            loadingTxt.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -292,6 +301,8 @@ public class MainActivity extends AppCompatActivity implements FederalPresidentF
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            avi.hide();
+            loadingTxt.setVisibility(View.INVISIBLE);
             pagerAdapter = new PagerAdapter(getSupportFragmentManager(),6,FederalPresidentList,FederalVicePresidentList,CollegePresidentList,
                     CollegeVicePresidentList,MemberOfParliamentsList,SchoolRepresentativeList);
             viewPager.setAdapter(pagerAdapter);
